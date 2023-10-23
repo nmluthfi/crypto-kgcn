@@ -21,6 +21,10 @@ KGCN is **K**nowledge **G**raph **C**onvolutional **N**etworks for recommender s
     - `item_index2entity_id.txt`: the mapping from item indices in the raw rating file to entity IDs in the KG;
     - `kg.txt`: knowledge graph file;
     - `user_artists.dat`: raw rating file of Last.FM;
+  - `crypto/`
+    - `item_index2entity_id.txt`: the mapping from item indices in the raw rating file to entity IDs in the KG;
+    - `kg.txt`: knowledge graph file;
+    - `crypto_rating.csv`: raw rating file of Last.FM;
 - `src/`: implementations of KGCN.
 
 
@@ -44,9 +48,23 @@ KGCN is **K**nowledge **G**raph **C**onvolutional **N**etworks for recommender s
     ```
   - open `src/main.py` file;
     
-  - comment the code blocks of parameter settings for MovieLens-20M;
+  - comment the code blocks of parameter settings for MovieLens and crypto;
     
   - uncomment the code blocks of parameter settings for Last.FM;
+    
+  - ```
+    $ python main.py
+    ```
+- Crypto
+  - ```
+    $ cd src
+    $ python preprocess.py -d crypto
+    ```
+  - open `src/main.py` file;
+    
+  - comment the code blocks of parameter settings for MovieLens-20M and music;
+    
+  - uncomment the code blocks of parameter settings for Crypto;
     
   - ```
     $ python main.py
