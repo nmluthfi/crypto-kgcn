@@ -24,7 +24,7 @@ KGCN is **K**nowledge **G**raph **C**onvolutional **N**etworks for recommender s
   - `crypto/`
     - `item_index2entity_id.txt`: the mapping from item indices in the raw rating file to entity IDs in the KG;
     - `kg.txt`: knowledge graph file;
-    - `crypto_rating.csv`: raw rating file of Last.FM;
+    - `ratings.csv`: raw rating file of Last.FM;
 - `src/`: implementations of KGCN.
 
 
