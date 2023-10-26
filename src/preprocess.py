@@ -32,31 +32,6 @@ def read_item_index_to_entity_id_file():
         entity_id2index[satori_id] = i
         i += 1
 
-# def read_item_index_to_entity_id_file():
-#     file = '../data/' + DATASET + '/item_index2entity_id.txt'
-#     print('reading item index to entity id file: ' + file + ' ...')
-#     i = 0
-#     try:
-#         with open(file, encoding='utf-8') as f:
-#             for line in f.readlines():
-#                 # Split the line into parts based on the tab delimiter
-#                 parts = line.strip().split('\t')
-                
-#                 # Check if the line has the expected number of parts (two in this case)
-#                 if len(parts) == 2:
-#                     item_index = parts[0]
-#                     satori_id = parts[1]
-#                     item_index_old2new[item_index] = i
-#                     entity_id2index[satori_id] = i
-#                     i += 1
-#                 else:
-#                     # Handle lines that do not have the expected format
-#                     print(f"Skipping line: {line.strip()}. Incorrect format.")
-#     except FileNotFoundError:
-#         print(f"File not found: {file}")
-#     except Exception as e:
-#         print(f"An error occurred: {str(e)}")
-
 
 def convert_rating():
     file = '../data/' + DATASET + '/' + RATING_FILE_NAME[DATASET]
@@ -150,7 +125,7 @@ if __name__ == '__main__':
     np.random.seed(555)
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('-d', type=str, default='movie', help='which dataset to preprocess')
+    parser.add_argument('-d', type=str, default='crypto', help='which dataset to preprocess')
     args = parser.parse_args()
     DATASET = args.d
 
