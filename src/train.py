@@ -35,6 +35,7 @@ def train(args, data, show_loss, show_topk):
             print('epoch %d    train auc: %.4f  f1: %.4f    eval auc: %.4f  f1: %.4f    test auc: %.4f  f1: %.4f'
                   % (step, train_auc, train_f1, eval_auc, eval_f1, test_auc, test_f1))
 
+
             # top-K evaluation
             if show_topk:
                 precision, recall = topk_eval(
