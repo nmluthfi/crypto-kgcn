@@ -9,7 +9,6 @@ def load_data(args):
 
     return n_user, n_item, n_entity, n_relation, train_data, eval_data, test_data, adj_entity, adj_relation
 
-
 def load_rating(args):
     print('reading rating file ...')
 
@@ -87,20 +86,40 @@ def construct_kg(kg_np):
     return kg
 
 
-def construct_adj(args, kg, entity_num):
-    print('constructing adjacency matrix ...')
-    # each line of adj_entity stores the sampled neighbor entities for a given entity
-    # each line of adj_relation stores the corresponding sampled neighbor relations
-    adj_entity = np.zeros([entity_num, args.neighbor_sample_size], dtype=np.int64)
-    adj_relation = np.zeros([entity_num, args.neighbor_sample_size], dtype=np.int64)
-    for entity in range(entity_num):
-        neighbors = kg[entity]
-        n_neighbors = len(neighbors)
-        if n_neighbors >= args.neighbor_sample_size:
-            sampled_indices = np.random.choice(list(range(n_neighbors)), size=args.neighbor_sample_size, replace=False)
-        else:
-            sampled_indices = np.random.choice(list(range(n_neighbors)), size=args.neighbor_sample_size, replace=True)
-        adj_entity[entity] = np.array([neighbors[i][0] for i in sampled_indices])
-        adj_relation[entity] = np.array([neighbors[i][1] for i in sampled_indices])
+# def construct_adj(args, kg, entity_num):
+#     print('constructing adjacency matrix ...')
+#     # each line of adj_entity stores the sampled neighbor entities for a given entity
+#     # each line of adj_relation stores the corresponding sampled neighbor relations
+#     adj_entity = np.zeros([entity_num, args.neighbor_sample_size], dtype=np.int64)
+#     adj_relation = np.zeros([entity_num, args.neighbor_sample_size], dtype=np.int64)
+#     for entity in range(entity_num):
+#         neighbors = kg[entity]
+#         n_neighbors = len(neighbors)
+#         if n_neighbors >= args.neighbor_sample_size:
+#             sampled_indices = np.random.choice(list(range(n_neighbors)), size=args.neighbor_sample_size, replace=False)
+#         else:
+#             sampled_indices = np.random.choice(list(range(n_neighbors)), size=args.neighbor_sample_size, replace=True)
+#         adj_entity[entity] = np.array([neighbors[i][0] for i in sampled_indices])
+#         adj_relation[entity] = np.array([neighbors[i][1] for i in sampled_indices])
+
+#     return adj_entity, adj_relation
+
+def construct_adj(args, kg, n_entity):
+    # Initialize adjacency matrices
+    adj_entity = np.zeros((n_entity, n_entity))
+    adj_relation = np.zeros((n_entity, n_entity))
+
+    for entity in range(n_entity):
+        try:
+            # Check if the entity exists in the kg dictionary
+            neighbors = kg[entity]
+            for neighbor, relation in neighbors:
+                # Check if the neighbor exists in the kg dictionary
+                if neighbor < n_entity:
+                    # Update adjacency matrices with neighbors and relations
+                    adj_entity[entity][neighbor] = 1
+                    adj_relation[entity][neighbor] = relation
+        except KeyError:
+            print(f"Entity {entity} not found in the kg dictionary. Skipping.")
 
     return adj_entity, adj_relation

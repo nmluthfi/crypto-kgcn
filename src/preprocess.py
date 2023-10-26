@@ -1,9 +1,24 @@
 import argparse
 import numpy as np
 
-RATING_FILE_NAME = dict({'movie': 'ratings.csv', 'book': 'BX-Book-Ratings.csv', 'music': 'user_artists.dat'})
-SEP = dict({'movie': ',', 'book': ';', 'music': '\t'})
-THRESHOLD = dict({'movie': 4, 'book': 0, 'music': 0})
+RATING_FILE_NAME = dict({
+        'movie': 'ratings.csv',
+        'crypto': 'ratings.csv',  
+        'book': 'BX-Book-Ratings.csv', 
+        'music': 'user_artists.dat'
+    })
+SEP = dict({
+        'movie': ',', 
+        'crypto': ',', 
+        'book': ';', 
+        'music': '\t'
+    })
+THRESHOLD = dict({
+        'movie': 4, 
+        'crypto': 4, 
+        'book': 0, 
+        'music': 0
+    })
 
 
 def read_item_index_to_entity_id_file():
@@ -16,6 +31,31 @@ def read_item_index_to_entity_id_file():
         item_index_old2new[item_index] = i
         entity_id2index[satori_id] = i
         i += 1
+
+# def read_item_index_to_entity_id_file():
+#     file = '../data/' + DATASET + '/item_index2entity_id.txt'
+#     print('reading item index to entity id file: ' + file + ' ...')
+#     i = 0
+#     try:
+#         with open(file, encoding='utf-8') as f:
+#             for line in f.readlines():
+#                 # Split the line into parts based on the tab delimiter
+#                 parts = line.strip().split('\t')
+                
+#                 # Check if the line has the expected number of parts (two in this case)
+#                 if len(parts) == 2:
+#                     item_index = parts[0]
+#                     satori_id = parts[1]
+#                     item_index_old2new[item_index] = i
+#                     entity_id2index[satori_id] = i
+#                     i += 1
+#                 else:
+#                     # Handle lines that do not have the expected format
+#                     print(f"Skipping line: {line.strip()}. Incorrect format.")
+#     except FileNotFoundError:
+#         print(f"File not found: {file}")
+#     except Exception as e:
+#         print(f"An error occurred: {str(e)}")
 
 
 def convert_rating():
