@@ -32,21 +32,8 @@ def train(args, data, show_loss, show_topk):
             eval_auc, eval_f1 = ctr_eval(sess, model, eval_data, args.batch_size)
             test_auc, test_f1 = ctr_eval(sess, model, test_data, args.batch_size)
 
-            # print('epoch %d    train auc: %.4f  f1: %.4f    eval auc: %.4f  f1: %.4f    test auc: %.4f  f1: %.4f'
-            #       % (step, train_auc, train_f1, eval_auc, eval_f1, test_auc, test_f1))
-            
-            # Replace NaN values with 0 in the metrics
-            train_auc = np.nan_to_num(train_auc)
-            train_f1 = np.nan_to_num(train_f1)
-            eval_auc = np.nan_to_num(eval_auc)
-            eval_f1 = np.nan_to_num(eval_f1)
-            test_auc = np.nan_to_num(test_auc)
-            test_f1 = np.nan_to_num(test_f1)
-
-            # Print the metrics
             print('epoch %d    train auc: %.4f  f1: %.4f    eval auc: %.4f  f1: %.4f    test auc: %.4f  f1: %.4f'
-                % (step, np.mean(train_auc), np.mean(train_f1), np.mean(eval_auc), np.mean(eval_f1), np.mean(test_auc), np.mean(test_f1)))
-
+                  % (step, train_auc, train_f1, eval_auc, eval_f1, test_auc, test_f1))
 
             # top-K evaluation
             if show_topk:
@@ -61,65 +48,6 @@ def train(args, data, show_loss, show_topk):
                     print('%.4f\t' % i, end='')
                 print('\n')
 
-# def train(args, data, show_loss, show_topk):
-#     n_user, n_item, n_entity, n_relation = data[0], data[1], data[2], data[3]
-#     train_data, eval_data, test_data = data[4], data[5], data[6]
-#     adj_entity, adj_relation = data[7], data[8]
-
-#     model = KGCN(args, n_user, n_entity, n_relation, adj_entity, adj_relation)
-
-#     # top-K evaluation settings
-#     user_list, train_record, test_record, item_set, k_list = topk_settings(show_topk, train_data, test_data, n_item)
-
-#     with tf.Session() as sess:
-#         sess.run(tf.global_variables_initializer())
-
-#         for step in range(args.n_epochs):
-#             # training
-#             np.random.shuffle(train_data)
-#             start = 0
-#             # skip the last incomplete minibatch if its size < batch size
-#             while start + args.batch_size <= train_data.shape[0]:
-#                 _, loss = model.train(sess, get_feed_dict(model, train_data, start, start + args.batch_size))
-#                 start += args.batch_size
-#                 if show_loss:
-#                     print(start, loss)
-
-#             # CTR evaluation
-#             # train_auc, train_f1, train_accuracy = ctr_eval(sess, model, train_data, args.batch_size)
-#             # eval_auc, eval_f1, eval_accuracy = ctr_eval(sess, model, eval_data, args.batch_size)
-#             # test_auc, test_f1, test_accuracy = ctr_eval(sess, model, test_data, args.batch_size)
-#             train_auc, train_f1, train_accuracy = ctr_eval(sess, model, train_data, args.batch_size) + (0,) * (3 - len(ctr_eval(sess, model, train_data, args.batch_size)))
-#             eval_auc, eval_f1, eval_accuracy = ctr_eval(sess, model, eval_data, args.batch_size) + (0,) * (3 - len(ctr_eval(sess, model, eval_data, args.batch_size)))
-#             test_auc, test_f1, test_accuracy = ctr_eval(sess, model, test_data, args.batch_size) + (0,) * (3 - len(ctr_eval(sess, model, test_data, args.batch_size)))
-
-#             # Replace NaN values with 0 in the metrics
-#             train_auc = np.nan_to_num(train_auc)
-#             train_f1 = np.nan_to_num(train_f1)
-#             train_accuracy = np.nan_to_num(train_accuracy)
-#             eval_auc = np.nan_to_num(eval_auc)
-#             eval_f1 = np.nan_to_num(eval_f1)
-#             eval_accuracy = np.nan_to_num(eval_accuracy)
-#             test_auc = np.nan_to_num(test_auc)
-#             test_f1 = np.nan_to_num(test_f1)
-#             test_accuracy = np.nan_to_num(test_accuracy)
-
-#             # Print the metrics
-#             print('epoch %d    train auc: %.4f  f1: %.4f  accuracy: %.4f    eval auc: %.4f  f1: %.4f  accuracy: %.4f    test auc: %.4f  f1: %.4f  accuracy: %.4f'
-#                 % (step, np.mean(train_auc), np.mean(train_f1), np.mean(train_accuracy), np.mean(eval_auc), np.mean(eval_f1), np.mean(eval_accuracy), np.mean(test_auc), np.mean(test_f1), np.mean(test_accuracy)))
-
-#             # top-K evaluation
-#             if show_topk:
-#                 precision, recall = topk_eval(
-#                     sess, model, user_list, train_record, test_record, item_set, k_list, args.batch_size)
-#                 print('precision: ', end='')
-#                 for i in precision:
-#                     print('%.4f\t' % i, end='')
-#                 print()
-#                 print('recall: ', end='')
-#                 for i in recall:
-#                     print('%.4f\t' % i, end='')
-#                 print('\n')
 
 def topk_settings(show_topk, train_data, test_data, n_item):
     if show_topk:
