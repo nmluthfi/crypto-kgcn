@@ -4,11 +4,13 @@
 --neighbor_sample_size 8 --dim 192 --batch_size 512 --l2_weight 2e-5 --lr 8e-5 --ratio 0.6
 --neighbor_sample_size 18 --dim 96 --batch_size 256 --l2_weight 4e-5 --lr 1e-4 --ratio 0.85
 --neighbor_sample_size 14 --dim 160 --batch_size 384 --l2_weight 3e-5 --lr 7e-5 --ratio 0.75
+
+//
 --neighbor_sample_size 10 --dim 224 --batch_size 448 --l2_weight 4e-5 --lr 1.2e-4 --ratio 0.65
 --neighbor_sample_size 22 --dim 80 --batch_size 192 --l2_weight 2.5e-5 --lr 6e-5 --ratio 0.85
 --neighbor_sample_size 16 --dim 200 --batch_size 256 --l2_weight 3.5e-5 --lr 9e-5 --ratio 0.7
 --neighbor_sample_size 12 --dim 176 --batch_size 320 --l2_weight 2e-5 --lr 1.1e-4 --ratio 0.8
-
+//
 
 --neighbor_sample_size 8 --dim 32 --batch_size 128 --l2_weight 1e-7 --lr 2e-2 --ratio 1
 --neighbor_sample_size 8 --dim 64 --batch_size 256 --l2_weight 2e-5 --lr 2e-4 --ratio 1
