@@ -1,0 +1,70 @@
+1. First iteration arguments
+"--neighbor_sample_size 8 --dim 32 --batch_size 128 --l2_weight 1e-7 --lr 2e-2 --ratio 1"					
+the result
+total run time		
+seconds	minutes	hours
+1013	16.88333333	0.281388889
+
+
+2. Second iteration arguments
+"--neighbor_sample_size 8 --dim 64 --batch_size 256 --l2_weight 2e-5 --lr 2e-4 --ratio 1"					
+the result
+total run time		
+seconds	minutes	hours
+1596	26.6	0.443333333
+
+3. Third iteration arguments
+"--neighbor_sample_size 8 --dim 16 --batch_size 128 --l2_weight 1e-4 --lr 5e-4 --ratio 1"					
+the result
+total run time		
+seconds	minutes	hours
+616	10.26666667	0.171111111
+
+4. Fourth iteration arguments
+"--neighbor_sample_size 4 --dim 32 --batch_size 65536 --l2_weight 1e-7 --lr 2e-2 --ratio 1"					
+the result
+total run time		
+seconds	minutes	hours
+607	10.11666667	0.168611111
+
+5. Fifth iteration arguments
+"--neighbor_sample_size 16 --dim 128 --batch_size 512 --l2_weight 5e-5 --lr 1e-4 --ratio 0.8"					
+the result
+total run time		
+seconds	minutes	hours
+9682	161.3666667	2.689444444
+
+6. Sixth iteration arguments
+"--neighbor_sample_size 12 --dim 256 --batch_size 256 --l2_weight 1e-5 --lr 2e-4 --ratio 0.8"					
+the result
+total run time		
+seconds	minutes	hours
+911243	187.3833333	3.123055556
+
+7. Seventh iteration arguments
+"--neighbor_sample_size 20 --dim 64 --batch_size 128 --l2_weight 3e-5 --lr 2e-4 --ratio 0.9"					
+the result
+total run time		
+seconds	minutes	hours
+8142	135.7	2.261666667
+
+8. Eigth iteration arguments
+"--neighbor_sample_size 8 --dim 192 --batch_size 512 --l2_weight 2e-5 --lr 8e-5 --ratio 0.6"					
+the result
+total run time		
+seconds	minutes	hours
+4011	66.85	1.114166667
+
+9. Nineth iteration argumemts
+"--neighbor_sample_size 18 --dim 96 --batch_size 256 --l2_weight 4e-5 --lr 1e-4 --ratio 0.85"					
+the result
+total run time		
+seconds	minutes	hours
+9491	158.1833333	2.636388889
+
+10. Ten iteration argumemts
+"--neighbor_sample_size 14 --dim 160 --batch_size 384 --l2_weight 3e-5 --lr 7e-5 --ratio 0.75"					
+the result
+total run time		
+seconds	minutes	hours
+1970	32.83333333	0.547222222

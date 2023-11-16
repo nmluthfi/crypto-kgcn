@@ -1,0 +1,71 @@
+Result is the avg of each iteration
+
+1. First iteration arguments
+"--neighbor_sample_size 8 --dim 32 --batch_size 128 --l2_weight 1e-7 --lr 2e-2 --ratio 1"					
+the result
+train		eval		test	
+auc	f1	auc	f1	auc	f1
+0.97386	0.94978	0.75825	0.73649	0.76293	0.73396
+ 
+2. Second iteration arguments
+"--neighbor_sample_size 8 --dim 64 --batch_size 256 --l2_weight 2e-5 --lr 2e-4 --ratio 1"					
+the result
+train		eval		test	
+auc	f1	auc	f1	auc	f1
+0.74118	0.67353	0.40983	0.46192	0.40981	0.45895
+
+3. Third iteration arguments
+"--neighbor_sample_size 8 --dim 16 --batch_size 128 --l2_weight 1e-4 --lr 5e-4 --ratio 1"					
+the result
+train		eval		test	
+auc	f1	auc	f1	auc	f1
+0.48329	0.49049	0.51753	0.52801	0.51954	0.52524
+
+4. Fourth iteration arguments
+"--neighbor_sample_size 4 --dim 32 --batch_size 65536 --l2_weight 1e-7 --lr 2e-2 --ratio 1"					
+the result
+train		eval		test	
+auc	f1	auc	f1	auc	f1
+nan	nan	nan	nan	nan	nan
+
+5. Fifth iteration arguments
+"--neighbor_sample_size 16 --dim 128 --batch_size 512 --l2_weight 5e-5 --lr 1e-4 --ratio 0.8"					
+the result
+train		eval		test	
+auc	f1	auc	f1	auc	f1
+0.82611	0.73672	0.30308	0.37233	0.30391	0.36861
+
+6. Sixth iteration arguments
+"--neighbor_sample_size 12 --dim 256 --batch_size 256 --l2_weight 1e-5 --lr 2e-4 --ratio 0.8"					
+the result
+train		eval		test	
+auc	f1	auc	f1	auc	f1
+0.91268	0.84429	0.40419	0.46255	0.365736	0.45864
+
+7. Seventh iteration arguments
+"--neighbor_sample_size 20 --dim 64 --batch_size 128 --l2_weight 3e-5 --lr 2e-4 --ratio 0.9"					
+the result
+train		eval		test	
+auc	f1	auc	f1	auc	f1
+0.61408	0.5726	0.39066	0.45403	0.388052	0.44679
+
+8. Eigth iteration arguments
+"--neighbor_sample_size 8 --dim 192 --batch_size 512 --l2_weight 2e-5 --lr 8e-5 --ratio 0.6"					
+the result
+train		eval		test	
+auc	f1	auc	f1	auc	f1
+0.88166	0.78319	0.34402	0.40625	0.33828	0.397
+
+9. Nineth iteration argumemts
+"--neighbor_sample_size 18 --dim 96 --batch_size 256 --l2_weight 4e-5 --lr 1e-4 --ratio 0.85"					
+the result
+train		eval		test	
+auc	f1	auc	f1	auc	f1
+0.7301	0.66717	0.44608	0.4733	0.44593	0.46414
+
+10. Ten iteration argumemts
+"--neighbor_sample_size 14 --dim 160 --batch_size 384 --l2_weight 3e-5 --lr 7e-5 --ratio 0.75"					
+the result
+train		eval		test	
+auc	f1	auc	f1	auc	f1
+0.84538	0.74849	0.30554	0.37378	0.30931	0.37335
