@@ -1,0 +1,6 @@
+// --neighbor_sample_size 8 --dim 32 --batch_size 128 --l2_weight 1e-7 --lr 2e-2 --ratio 1
+"--neighbor_sample_size 8 --dim 4 --batch_size 128 --l2_weight 1e-7 --lr 2e-2 --ratio 1"
+"--neighbor_sample_size 8 --dim 8 --batch_size 128 --l2_weight 1e-7 --lr 2e-2 --ratio 1"
+"--neighbor_sample_size 8 --dim 16 --batch_size 128 --l2_weight 1e-7 --lr 2e-2 --ratio 1"
+"--neighbor_sample_size 8 --dim 64 --batch_size 128 --l2_weight 1e-7 --lr 2e-2 --ratio 1"
+"--neighbor_sample_size 8 --dim 128 --batch_size 128 --l2_weight 1e-7 --lr 2e-2 --ratio 1"
