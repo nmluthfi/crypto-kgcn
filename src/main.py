@@ -35,19 +35,17 @@ parser.add_argument('--l2_weight', type=float, default=1e-7, help='weight of l2 
 parser.add_argument('--lr', type=float, default=2e-2, help='learning rate')
 parser.add_argument('--ratio', type=float, default=1, help='size of training dataset')
 
-'''
 # book
-parser.add_argument('--dataset', type=str, default='book', help='which dataset to use')
-parser.add_argument('--aggregator', type=str, default='sum', help='which aggregator to use')
-parser.add_argument('--n_epochs', type=int, default=10, help='the number of epochs')
-parser.add_argument('--neighbor_sample_size', type=int, default=8, help='the number of neighbors to be sampled')
-parser.add_argument('--dim', type=int, default=64, help='dimension of user and entity embeddings')
-parser.add_argument('--n_iter', type=int, default=3, help='number of iterations when computing entity representation')
-parser.add_argument('--batch_size', type=int, default=256, help='batch size')
-parser.add_argument('--l2_weight', type=float, default=2e-5, help='weight of l2 regularization')
-parser.add_argument('--lr', type=float, default=2e-4, help='learning rate')
-parser.add_argument('--ratio', type=float, default=1, help='size of training dataset')
-'''
+# parser.add_argument('--dataset', type=str, default='book', help='which dataset to use')
+# parser.add_argument('--aggregator', type=str, default='sum', help='which aggregator to use')
+# parser.add_argument('--n_epochs', type=int, default=10, help='the number of epochs')
+# parser.add_argument('--neighbor_sample_size', type=int, default=8, help='the number of neighbors to be sampled')
+# parser.add_argument('--dim', type=int, default=64, help='dimension of user and entity embeddings')
+# parser.add_argument('--n_iter', type=int, default=3, help='number of iterations when computing entity representation')
+# parser.add_argument('--batch_size', type=int, default=256, help='batch size')
+# parser.add_argument('--l2_weight', type=float, default=2e-5, help='weight of l2 regularization')
+# parser.add_argument('--lr', type=float, default=2e-4, help='learning rate')
+# parser.add_argument('--ratio', type=float, default=1, help='size of training dataset')
 
 '''
 # music
@@ -103,3 +101,18 @@ with tf.Session() as sess:
     result_names = [index_to_name_mapping[index] for index in top_3_recommendations]
 
     print(f'Top 3 recommended cryptocurrencies for userId {user_index_to_predict}: {result_names}')
+
+# with tf.Session() as sess:
+#     sess.run(tf.global_variables_initializer())
+
+#     # Predict top-3 for a specific user (replace USER_INDEX with the desired user index)
+#     user_index_to_predict = 1
+#     max_item_id = 7277
+#     top_3_recommendations = predict_top_k_for_user(
+#         sess, model, user_index_to_predict, data[1], k=3, batch_size=args.batch_size, max_item_id=max_item_id
+#     )
+
+#     # Map indices to item names and print with scores
+#     for item_id, score in top_3_recommendations:
+#         item_name = index_to_name_mapping[item_id]
+#         print(f'Recommended cryptocurrency: {item_name}, Score: {score}')

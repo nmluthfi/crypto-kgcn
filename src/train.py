@@ -171,3 +171,51 @@ def predict_top_k_for_user(sess, model, user, item_set, k, batch_size, max_item_
     item_sorted = [item_id for item_id in item_sorted if 1 <= item_id <= max_item_id]
 
     return item_sorted[:k]
+
+# def predict_top_k_for_user(sess, model, user, item_set, k, batch_size, max_item_id):
+#     # Generate a list of items to be tested
+#     test_item_list = list(range(item_set))
+    
+#     # Initialize an empty dictionary to store item scores
+#     item_score_map = dict()
+    
+#     # Iterate through the test items in batches
+#     start = 0
+#     while start + batch_size <= len(test_item_list):
+#         # Get scores for the current batch of items
+#         items, scores = model.get_scores(
+#             sess,
+#             {
+#                 model.user_indices: [user] * batch_size,
+#                 model.item_indices: test_item_list[start:start + batch_size]
+#             }
+#         )
+        
+#         # Update the item_score_map with the scores
+#         for item, score in zip(items, scores):
+#             item_score_map[item] = score
+        
+#         start += batch_size
+
+#     # Padding for the last incomplete minibatch if it exists
+#     if start < len(test_item_list):
+#         items, scores = model.get_scores(
+#             sess,
+#             {
+#                 model.user_indices: [user] * batch_size,
+#                 model.item_indices: test_item_list[start:] + [test_item_list[-1]] * (
+#                         batch_size - len(test_item_list) + start)
+#             }
+#         )
+#         # Update the item_score_map with the scores
+#         for item, score in zip(items, scores):
+#             item_score_map[item] = score
+
+#     # Sort items based on scores in descending order
+#     item_score_pair_sorted = sorted(item_score_map.items(), key=lambda x: x[1], reverse=True)
+
+#     # Filter out recommendations outside the valid range (1 to max_item_id)
+#     item_score_sorted = [(item_id, score) for item_id, score in item_score_pair_sorted if 1 <= item_id <= max_item_id]
+
+#     # Return the top-k recommendations with scores
+#     return item_score_sorted[:k]
